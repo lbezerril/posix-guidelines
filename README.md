@@ -25,40 +25,40 @@ Copy and paste in the header of each script:
 * For constants, use underscores with upper case, as in `CONSTANT_NAME="value"`
 
 ### Variables and Constants
-* Local variables should be declared with `local`, including in loops, as in:
+* Local variables should be declared with `local`, including loops, as in:
 ```sh
 local dir
 for dir in /bin /sbin /usr; do
   echo $dir
 done
 ```
-* Constants should be declared on start of script or function.
+* Constants should be declared at the beginning of a script or function.
 
 ### Comments
 * Functions should contain clear comments about your goal. A description of the expected arguments, as well as the stdin if applicable, should also be commented on. Examples:
 ```sh
-# Return a list of registered users from database
+# Return a list of registered users in the database
 _get_users() {
-  echo "Your implementation ..."
+  echo "implementation ..."
 }
 
 # Register a new user
 _create_user() {
   # $1: The username
   # $2: The user password
-  # $@: List of phone numbers separated by comma
+  # $@: Comma-separated list of phone numbers
 
-  echo "Your implementation ..."
+  echo "implementation ..."
 }
 
 # Removes a list of users
 _drop_users() {
-  # stdin: List of usernames separated by comma
+  # stdin: Comma-separated list of usernames
 
-  echo "Your implementation ..."
+  echo "implementation ..."
 }
 ```
-* If you have code snippet that is confused, comment what is it goal.
+* If you have a confusing code snippet, comment on its purpose.
 
 ### Conditional
 * Simple if/else: `[ -z "$foo" ] && return 1 || echo "$foo"`

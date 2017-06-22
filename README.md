@@ -2,13 +2,13 @@
 Guidelines for writing your shell scripts in the POSIX standard
 
 `Version: 0.1.0`
-(*See [semver.org](http://semver.org/)*)
+<sub><sup>*[semver.org](http://semver.org/)*</sup></sub>
 
 ## Indicate inside your shell scripts that you are using posix-guidelines
-**Copy and paste in the header of each script:**
+Copy and paste in the header of each script:
 ```sh
 # This POSIX sh is following the "posix-guidelines" version="0.1.0" {
-#   <https://github.com/lbezerril/posix-guidelines>
+#   <https://github.com/lbezerril/posix-guidelines/blob/master/README.md>
 # }
 ```
 
@@ -41,7 +41,7 @@ done
 _get_users() {
   echo "Your implementation ..."
 }
-#
+
 # Register a new user
 _create_user() {
   # $1: The username
@@ -50,7 +50,7 @@ _create_user() {
 
   echo "Your implementation ..."
 }
-#
+
 # Removes a list of users
 _drop_users() {
   # stdin: List of usernames separated by comma

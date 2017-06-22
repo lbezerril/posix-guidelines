@@ -1,0 +1,74 @@
+## General
+
+
+Caso o shell script aceite tanto receber stdin via pipeline ou não, a validação deverá ser feita da seguinte maneira:
+    local stdin
+    [ -t 0 ] || read stdin
+
+
+
+
+
+###############################################################################
+
+
+
+
+If/Else simples:
+    Errado:
+        [ "$1" = "${parameter%%=*}" ] && echo "${parameter#*=}" && return 0
+    Correto:
+        if [ "$1" = "${parameter%%=*}" ]; then
+            echo "${parameter#*=}"
+            return 0
+        fi
+
+
+Testes de condições que executarão apenas uma linha de código deverá ser utilizado o "[ ]" com "||" ou "&&":
+    [ -z "$2" ] && return 0
+
+
+
+
+###############################################################################
+
+
+[SH IMPORT] Funções que serão exportadas (Exported functions) devem começar com "_":
+    _func() ()
+
+[SH IMPORT] Funções que não serão reaproveitadas futuramente (Configuration functions) devem começar com "__":
+    __func() {}
+
+[SH IMPORT] Constantes que não serão reaproveitadas futuramente devem começar com "__":
+    __MODULES
+
+
+###############################################################################
+
+
+[SH IMPORT] Exported functions devem ser declaradas como subshell para evitar que variáveis utilizadas pela mesma seja exportada. (função privada, função de comportamento imutável):
+    _func() ()
+
+[SH IMPORT] Configuration functions deverão ser dessetadas após seu uso com "unset -f":
+    unset -f __func1 __func2
+
+[SH IMPORT] Constantes que não serão reaproveitadas deverão ser dessetadas após seu uso com "unset -v":
+    unset -v __MODULES __NAMES
+
+[SH IMPORT] Para passar argumentos para um script que será importado, o mesmo deverá ser feito via redirecionamento por pipe, já que o shell POSIX não reconhece argumentos quando usado o recurso de importação. A primeira instrução dentro do bloco de redirecionamento deverá ser a chamada para importar o script, caso contrário o stdout poderá ser redirecionado para outro comando:
+    echo foo | {
+        . bar
+
+        # demais comandos...
+    }
+
+
+
+
+###############################################################################
+
+Ficará para a próxima versão:
+
+|| {} 2>&1 | error "message"
+
+Usar regex no case

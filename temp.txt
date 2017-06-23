@@ -1,5 +1,3 @@
-## General
-
 
 [SH IMPORT] Exported functions devem ser declaradas como subshell para evitar que variáveis utilizadas pela mesma seja exportada. (função privada, função de comportamento imutável):
     _func() ()
@@ -17,11 +15,8 @@
         # demais comandos...
     }
 
-
 ###############################################################################
 
 Ficará para a próxima versão:
 
 || {} 2>&1 | error "message"
-
-Usar regex no case

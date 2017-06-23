@@ -1,23 +1,6 @@
 ## General
 
 
-If/Else simples:
-    Errado:
-        [ "$1" = "${parameter%%=*}" ] && echo "${parameter#*=}" && return 0
-    Correto:
-        if [ "$1" = "${parameter%%=*}" ]; then
-            echo "${parameter#*=}"
-            return 0
-        fi
-
-
-Testes de condições que executarão apenas uma linha de código deverá ser utilizado o "[ ]" com "||" ou "&&":
-    [ -z "$2" ] && return 0
-
-
-###############################################################################
-
-
 [SH IMPORT] Exported functions devem ser declaradas como subshell para evitar que variáveis utilizadas pela mesma seja exportada. (função privada, função de comportamento imutável):
     _func() ()
 

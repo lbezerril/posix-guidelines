@@ -1,19 +1,6 @@
 ## General
 
 
-Caso o shell script aceite tanto receber stdin via pipeline ou não, a validação deverá ser feita da seguinte maneira:
-    local stdin
-    [ -t 0 ] || read stdin
-
-
-
-
-
-###############################################################################
-
-
-
-
 If/Else simples:
     Errado:
         [ "$1" = "${parameter%%=*}" ] && echo "${parameter#*=}" && return 0
@@ -26,21 +13,6 @@ If/Else simples:
 
 Testes de condições que executarão apenas uma linha de código deverá ser utilizado o "[ ]" com "||" ou "&&":
     [ -z "$2" ] && return 0
-
-
-
-
-###############################################################################
-
-
-[SH IMPORT] Funções que serão exportadas (Exported functions) devem começar com "_":
-    _func() ()
-
-[SH IMPORT] Funções que não serão reaproveitadas futuramente (Configuration functions) devem começar com "__":
-    __func() {}
-
-[SH IMPORT] Constantes que não serão reaproveitadas futuramente devem começar com "__":
-    __MODULES
 
 
 ###############################################################################
@@ -61,8 +33,6 @@ Testes de condições que executarão apenas uma linha de código deverá ser ut
 
         # demais comandos...
     }
-
-
 
 
 ###############################################################################

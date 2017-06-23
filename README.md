@@ -21,18 +21,18 @@ Copy and paste in the header of each script:
 ### Naming convention
 * For functions, use underscores with lower case and an underscore prefix, as in `_foo_bar()`
 * For functions that will be sourced¹, use underscores with lower case and a double underscore prefix, as in `__foo_bar()`
-* For variables, use underscores with lower case, as in `variable_name="$1"`
 * For constants, use underscores with upper case, as in `CONSTANT_NAME="value"`
+* For constants that will be sourced¹, use underscores with upper case and a double underscore prefix, as in `__CONSTANT_NAME="value"`
+* For variables, use underscores with lower case, as in `variable_name="$1"`
+
+### Functions
+* Use `{ }` for functions, as in `_foo() {}`
+* Use `( )` (subshell) for functions that will be sourced, as in `__bar() ()`
 
 ### Variables and Constants
-* Local variables should be declared with `local`, including loops, as in:
-```sh
-local dir
-for dir in /bin /sbin /usr; do
-  echo $dir
-done
-```
 * Constants should be declared at the beginning of a script or function.
+* Do not use `local` on variables within functions that will be sourced (subshell)
+* Avoid `local`, use only in last case. Remember that `local` is not part of the POSIX standard, although most POSIX-compliant shell support it. One suggestion is to implement and use the "scope function", as suggested by "user7620483" found in [https://stackoverflow.com/questions/18597697/posix-compliant-way-to-scope-variables-to-a-function-in-a-shell-script#answer-42452641](https://stackoverflow.com/questions/18597697/posix-compliant-way-to-scope-variables-to-a-function-in-a-shell-script#answer-42452641). However, this may not work if there are readonly variables.
 
 ### Comments
 * Functions should contain clear comments about your goal. A description of the expected arguments, as well as the stdin if applicable, should also be commented on. Examples:
@@ -61,8 +61,9 @@ _drop_users() {
 * If you have a confusing code snippet, comment on its purpose.
 
 ### Conditional
-* Simple if/else: `[ -z "$foo" ] && return 1 || echo "$foo"`
 * Ternary operator: `foo=$([ "bar" = "bar" ] && echo "true" || echo "false")`
+* Simple if/else: `[ -z "$foo" ] && return 1 || echo "$foo"`
+* Example: `[ -t 0 ] || read stdin`
 
 ### Utility scripts¹
 * should be sourced to another scripts with `. util.sh`

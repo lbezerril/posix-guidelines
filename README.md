@@ -27,7 +27,7 @@ Copy and paste in the header of each script:
 
 ### Functions
 * Use `{ }` for functions, as in `_foo() {}`
-* Use `( )` (subshell) for functions that will be sourced, as in `__bar() ()`
+* Use `( )` (subshell) for functions that will be sourced, as in `__bar() ()`. This prevents variables declared in the function from being sourced.
 
 ### Variables and Constants
 * Constants should be declared at the beginning of a script or function.
@@ -97,4 +97,5 @@ equals=$([ "$foo" = "$bar" ] && echo "true" || echo "false")
 ```
 
 ### Sourced scripts¹
-* should be sourced to another scripts with `. util.sh`
+* Use `unset -f` after using functions that will not be sourced
+* Use `unset -v` after using constants that will not be sourced

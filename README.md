@@ -20,9 +20,9 @@ Copy and paste in the header of each script:
 
 ### Naming convention
 * For functions, use underscores with lower case and an underscore prefix, as in `_foo_bar()`
-* For functions that will be sourced¹, use underscores with lower case and a double underscore prefix, as in `__foo_bar()`
+* For functions that will be sourced, use underscores with lower case and a double underscore prefix, as in `__foo_bar()`
 * For constants, use underscores with upper case, as in `CONSTANT_NAME="value"`
-* For constants that will be sourced¹, use underscores with upper case and a double underscore prefix, as in `__CONSTANT_NAME="value"`
+* For constants that will be sourced, use underscores with upper case and a double underscore prefix, as in `__CONSTANT_NAME="value"`
 * For variables, use underscores with lower case, as in `variable_name="$1"`
 
 ### Functions
@@ -70,8 +70,8 @@ _drop_users() {
 [ -t 0 ] || read stdin
 
 [ -z "$bar" ] && return 1 || echo "$bar"
-```
-```sh
+
+
 # Using if, else
 
 if [ -z "$foo" ]; then
@@ -96,6 +96,6 @@ fi
 equals=$([ "$foo" = "$bar" ] && echo "true" || echo "false")
 ```
 
-### Sourced scripts¹
+### Sourced scripts
 * Use `unset -f` after using functions that will not be sourced
 * Use `unset -v` after using constants that will not be sourced

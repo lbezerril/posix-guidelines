@@ -97,5 +97,5 @@ equals=$([ "$foo" = "$bar" ] && echo "true" || echo "false")
 ```
 
 ### Sourced scripts
-* Use `unset -f` after using functions that will not be sourced
-* Use `unset -v` after using constants that will not be sourced
+* Use `unset -f` after using functions you do not want to be sourced
+* Use `unset -v` after using constants you do not want to be sourced

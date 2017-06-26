@@ -1,14 +1,14 @@
 # posix-guidelines
 Guidelines for writing your shell scripts in the POSIX standard
 
-`Version: 0.1.0`
+`Version: 1.0.0`
 <sub><sup>*[semver.org](http://semver.org/)*</sup></sub>
 
 ## Indicate inside your shell scripts that you are using posix-guidelines
 Copy and paste in the header of each script:
 ```sh
-# This POSIX sh is following the "posix-guidelines" version="0.1.0" {
-#   <https://github.com/lbezerril/posix-guidelines/blob/master/README.md>
+# This POSIX sh is following the "posix-guidelines" version="1.0.0" {
+#   <https://github.com/lbezerril/posix-guidelines/tree/1.0.0>
 # }
 ```
 

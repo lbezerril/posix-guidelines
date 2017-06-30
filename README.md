@@ -20,18 +20,18 @@ Copy and paste in the header of each script:
 
 ### Naming convention
 * For functions, use underscores with lower case and an underscore prefix, as in `_foo_bar()`
-* For [functions that will be sourced](# "Using . in another shell script, to execute commands from a file in the same shell."), use underscores with lower case and a double underscore prefix, as in `__foo_bar()`
+* For functions that will be sourced, use underscores with lower case and a double underscore prefix, as in `__foo_bar()`
 * For constants, use underscores with upper case, as in `CONSTANT_NAME="value"`
-* For [constants that will be sourced](# "Using . in another shell script, to execute commands from a file in the same shell."), use underscores with upper case and a double underscore prefix, as in `__CONSTANT_NAME="value"`
+* For constants that will be sourced, use underscores with upper case and a double underscore prefix, as in `__CONSTANT_NAME="value"`
 * For variables, use underscores with lower case, as in `variable_name="$1"`
 
 ### Functions
 * Use `{ }` for functions, as in `_foo() {}`
-* Use `( )` (subshell) for [functions that will be sourced](# "Using . in another shell script, to execute commands from a file in the same shell."), as in `__bar() ()`. This prevents variables declared in the function from being sourced.
+* Use `( )` (subshell) for functions that will be sourced, as in `__bar() ()`. This prevents variables declared in the function from being sourced.
 
 ### Variables and Constants
 * Constants should be declared at the beginning of a script or function.
-* Do not use `local` on variables within [functions that will be sourced](# "Using . in another shell script, to execute commands from a file in the same shell.") (subshell)
+* Do not use `local` on variables within functions that will be sourced (subshell)
 * Avoid `local`, use only if necessary. Remember that `local` is not part of the POSIX standard, although most POSIX-compliant shell support it. One suggestion is to implement and use the "scope function", as suggested by "user7620483" found [here](https://stackoverflow.com/questions/18597697/posix-compliant-way-to-scope-variables-to-a-function-in-a-shell-script#answer-42452641). However, this may not work if there are readonly variables. So it's up to you to decide!
 
 ### Comments
@@ -96,6 +96,6 @@ fi
 equals=$([ "$foo" = "$bar" ] && echo "true" || echo "false")
 ```
 
-### [Sourced scripts](# "Using . in another shell script, to execute commands from a file in the same shell.")
+### Sourced scripts
 * Use `unset -f` after using functions you do not want to be sourced
 * Use `unset -v` after using constants you do not want to be sourced
